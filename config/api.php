@@ -1,6 +1,5 @@
 <?php
 
-
 return [
 
     /*
@@ -17,7 +16,7 @@ return [
     | to you can register your type with the IANA. For more details:
     | https://tools.ietf.org/html/rfc6838
     |
-    */
+     */
 
     'standardsTree' => env('API_STANDARDS_TREE', 'x'),
 
@@ -31,7 +30,7 @@ return [
     |
     | For example: Accept: application/x.SUBTYPE.v1+json
     |
-    */
+     */
 
     'subtype' => env('API_SUBTYPE', ''),
 
@@ -44,7 +43,7 @@ return [
     | is accessed via a web browser. It's also used as the default version
     | when generating your APIs documentation.
     |
-    */
+     */
 
     'version' => env('API_VERSION', 'v1'),
 
@@ -56,7 +55,7 @@ return [
     | A default prefix to use for your API routes so you don't have to
     | specify it for each group.
     |
-    */
+     */
 
     'prefix' => env('API_PREFIX', null),
 
@@ -68,7 +67,7 @@ return [
     | A default domain to use for your API routes so you don't have to
     | specify it for each group.
     |
-    */
+     */
 
     'domain' => env('API_DOMAIN', null),
 
@@ -81,7 +80,7 @@ return [
     | configure a default name to avoid having to manually specify
     | one when using the command.
     |
-    */
+     */
 
     'name' => env('API_NAME', null),
 
@@ -95,7 +94,7 @@ return [
     | will return a 304 Not Modified. This can also be enabled or disabled
     | on certain groups or routes.
     |
-    */
+     */
 
     'conditionalRequest' => env('API_CONDITIONAL_REQUEST', true),
 
@@ -108,7 +107,7 @@ return [
     | with every request. This also voids the default API version, meaning
     | your API will not be browsable via a web browser.
     |
-    */
+     */
 
     'strict' => env('API_STRICT', false),
 
@@ -121,7 +120,7 @@ return [
     | exceptions to have a "debug" key that will be populated with
     | more detailed information on the exception.
     |
-    */
+     */
 
     'debug' => env('API_DEBUG', false),
 
@@ -135,7 +134,7 @@ return [
     | keys that aren't replaced with corresponding values will be
     | removed from the final response.
     |
-    */
+     */
 
     'errorFormat' => [
         'message' => ':message',
@@ -152,7 +151,7 @@ return [
     |
     | Middleware that will be applied globally to all API requests.
     |
-    */
+     */
 
     'middleware' => [
 
@@ -166,7 +165,7 @@ return [
     | The authentication providers that should be used when attempting to
     | authenticate an incoming API request.
     |
-    */
+     */
 
     'auth' => [
 
@@ -181,7 +180,7 @@ return [
     | make. You can create your own throttles or simply change the default
     | throttles.
     |
-    */
+     */
 
     'throttling' => [
 
@@ -197,7 +196,7 @@ return [
     | responses prior to formatting. You can easily replace
     | this with your own transformer.
     |
-    */
+     */
 
     'transformer' => env('API_TRANSFORMER', Dingo\Api\Transformer\Adapter\Fractal::class),
 
@@ -210,7 +209,7 @@ return [
     | response formatters. You can also customize an existing response
     | formatter with a number of options to configure its output.
     |
-    */
+     */
 
     'defaultFormat' => env('API_DEFAULT_FORMAT', 'json'),
 
@@ -228,6 +227,22 @@ return [
             'indent_size' => env('API_JSON_FORMAT_INDENT_SIZE', 2),
         ],
 
+    ],
+
+    /*
+     * 接口频率限制
+     */
+    'rate_limits' => [
+        // 访问频率限制，次数/分钟
+        'access' => [
+            'expires' => env('RATE_LIMITS_EXPIRES', 1),
+            'limit' => env('RATE_LIMITS', 60),
+        ],
+        // 登录相关，次数/分钟
+        'sign' => [
+            'expires' => env('SIGN_RATE_LIMITS_EXPIRES', 1),
+            'limit' => env('SIGN_RATE_LIMITS', 10),
+        ],
     ],
 
 ];
