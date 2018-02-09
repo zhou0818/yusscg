@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'api',
         'passwords' => 'users',
     ],
 
@@ -42,8 +42,13 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
+            'driver' => 'jwt',
             'provider' => 'users',
+        ],
+
+        'api_new_student' => [
+            'driver' => 'jwt',
+            'provider' => 'new_students',
         ],
     ],
 
@@ -69,7 +74,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-
+        'new_students' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\NewStudent::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

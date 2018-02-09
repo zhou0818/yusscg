@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\Api\CaptchaRequest;
 use Gregwar\Captcha\CaptchaBuilder;
+use Cache;
 
 class CaptchasController extends Controller
 {
@@ -14,7 +15,7 @@ class CaptchasController extends Controller
 
         $captcha = $captchaBuilder->build();
         $expiredAt = now()->addMinutes(2);
-        \Cache::put($key, ['phone' => $phone, 'code' => $captcha->getPhrase()], $expiredAt);
+        Cache::put($key, ['phone' => $phone, 'code' => $captcha->getPhrase()], $expiredAt);
 
         $result = [
             'captcha_key' => $key,
