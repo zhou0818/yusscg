@@ -18,7 +18,7 @@ class Authenticate
     public function handle($request, Closure $next, $type)
     {
         if (($type == 'user' && JWTAuth::getPayload()['auth_type'] == 'user') ||
-            ($type == 'api_new_student' && JWTAuth::getPayload()['auth_type'] == 'api_new_student')) {
+            ($type == 'new_student' && JWTAuth::getPayload()['auth_type'] == 'new_student')) {
             return $next($request);
         }
         return response()->json(['message' => 'Unauthorized.', 'status_code' => 401], 401);

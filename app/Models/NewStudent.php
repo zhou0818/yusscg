@@ -10,7 +10,7 @@ class NewStudent extends Authenticatable implements JWTSubject
 {
     use HasRoles;
 
-    protected $guard_name = 'api';
+    protected $guard_name = 'api_new_students';
     protected $fillable = [
         'name', 'reg_num', 'password', 'weixin_openid', 'weixin_unionid', 'is_fill', 'is_confirm', 'is_lottery', 'is_admit', 'admit_remark', 'class_remark'
     ];

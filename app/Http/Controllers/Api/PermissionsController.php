@@ -2,19 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\User;
-use Spatie\Permission\Models\Permission;
 use App\Transformers\PermissionTransformer;
+use Spatie\Permission\Models\Permission;
 
 class PermissionsController extends Controller
 {
-    public function rolesStore(User $user)
-    {
-        $user->assignRole('Admin');
-        return $this->response->noContent();
-    }
-
-    public function permissionsShow()
+    public function show()
     {
         return $this->response->collection(Permission::all(), new PermissionTransformer());
     }

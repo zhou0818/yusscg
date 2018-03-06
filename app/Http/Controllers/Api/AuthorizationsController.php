@@ -103,7 +103,6 @@ class AuthorizationsController extends Controller
         } else {
             Auth::guard('api_new_student')->logout();
         }
-        Auth::guard('api')->logout();
         return $this->response->noContent();
     }
 
