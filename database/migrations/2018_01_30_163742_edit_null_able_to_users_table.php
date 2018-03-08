@@ -16,7 +16,7 @@ class EditNullAbleToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('avatar')->nullable()->change();
             $table->string('nick_name')->nullable()->change();
-            $table->string('is_active')->default(false)->change();
+            $table->boolean('is_active')->default(0)->change();
         });
     }
 
@@ -30,7 +30,7 @@ class EditNullAbleToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('avatar')->nullable(false)->change();
             $table->string('nick_name')->nullable(false)->change();
-            $table->string('is_active')->default(null)->change();
+            $table->boolean('is_active')->default(null)->change();
         });
     }
 }
