@@ -8,7 +8,7 @@ use App\Models\NewStudent;
 
 class GenerateToken extends Command
 {
-    protected $signature = 'larabbs:generate-token';
+    protected $signature = 'yusscg:generate-token';
 
     protected $description = '快速为用户生成 token';
 

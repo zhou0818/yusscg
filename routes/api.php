@@ -59,7 +59,10 @@ $api->version('v1', [
         $api->group(['middleware' => ['api.auth', 'auth.type:user']], function ($api) {
             // 当前登录用户信息
             $api->get('user', 'UsersController@me')
-                ->name('api.user.show');
+                ->name('api.users.show');
+            //同步用户角色
+            $api->patch('users/{user}/roles', 'UsersController@syncRoles')
+                ->name('api.users.syncRoles');
             //查询系统功能
             $api->get('permissions', 'PermissionsController@show')
                 ->name('api.permissions.show');
@@ -83,7 +86,7 @@ $api->version('v1', [
         $api->group(['middleware' => ['api.auth', 'auth.type:new_student']], function ($api) {
             // 当前登录用户信息
             $api->get('new_student', 'NewStudentsController@me')
-                ->name('api.new_student.show');
+                ->name('api.new_students.show');
         });
     });
 });

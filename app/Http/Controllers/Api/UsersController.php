@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Transformers\UserTransformer;
 use Auth;
 use Cache;
+use App\Http\Requests\Api\UserRoleRequest;
 
 class UsersController extends Controller
 {
@@ -36,6 +37,12 @@ class UsersController extends Controller
     public function me()
     {
         return $this->response->item(Auth::guard('api')->user(), new UserTransformer());
+    }
+
+    public function syncRoles(UserRoleRequest $request, User $user)
+    {
+        $user->syncRoles($request->roles);
+        return $this->response->item($user, new UserTransformer());
     }
 }
 
