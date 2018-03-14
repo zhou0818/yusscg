@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddIsActiveToUsersTable extends Migration
+class AddInfoFillInfoToNewStudentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddIsActiveToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->boolean('is_active')->default(0);
+        Schema::table('new_students', function (Blueprint $table) {
+            $table->json('info')->nullable();
+            $table->json('fill_info')->nullable();
         });
     }
 
@@ -25,8 +26,9 @@ class AddIsActiveToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('is_active');
+        Schema::table('new_students', function (Blueprint $table) {
+            $table->dropColumn('info');
+            $table->dropColumn('fill_info');
         });
     }
 }

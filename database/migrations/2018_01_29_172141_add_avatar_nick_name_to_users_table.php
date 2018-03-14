@@ -14,8 +14,8 @@ class AddAvatarNickNameToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('avatar');
-            $table->string('nick_name');
+            $table->string('avatar')->nullable();
+            $table->string('nick_name')->nullable();
         });
     }
 

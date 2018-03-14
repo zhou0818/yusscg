@@ -20,9 +20,13 @@ class CreateNewStudentsTable extends Migration
             $table->string('password');
             $table->string('weixin_openid')->unique()->nullable();
             $table->string('weixin_unionid')->unique()->nullable();
+            //是否补填
             $table->boolean('is_fill')->default(false);
+            //是否确认
             $table->boolean('is_confirm')->default(false);
+            //是否摇中
             $table->boolean('is_lottery')->default(false);
+            //是否录取
             $table->boolean('is_admit')->default(false);
             $table->string('admit_remark')->nullable();
             $table->string('class_remark')->nullable();

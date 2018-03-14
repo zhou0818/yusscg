@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\Api\UserRequest;
+use App\Http\Requests\Api\UserRoleRequest;
 use App\Models\User;
 use App\Transformers\UserTransformer;
 use Auth;
 use Cache;
-use App\Http\Requests\Api\UserRoleRequest;
 
 class UsersController extends Controller
 {

@@ -81,6 +81,9 @@ $api->version('v1', [
             //同步角色的系统功能
             $api->patch('roles/{role}', 'RolesController@syncPermissions')
                 ->name('api.roles.syncPermissions');
+            //Excel导入
+            $api->post('excels', 'ExcelsController@store')
+                ->name('api.excels.store');
         });
         // 需要 token 验证的接口,新生
         $api->group(['middleware' => ['api.auth', 'auth.type:new_student']], function ($api) {
