@@ -40,7 +40,7 @@ class ExcelUploadHandler
         $file->move($upload_path, $filename);
 
         return [
-            'path' => "$folder_name$filename"
+            'path' => "$upload_path$filename"
         ];
     }
 }

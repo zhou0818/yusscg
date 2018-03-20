@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.5.36 on 2018-03-14 18:13:16.
+ * Generated for Laravel 5.5.36 on 2018-03-15 10:57:53.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -13315,6 +13315,14 @@ namespace Maatwebsite\Excel\Facades {
  
 }
 
+namespace Laravel\Horizon { 
+
+    class Horizon {
+         
+    }
+ 
+}
+
 
 namespace  { 
 
@@ -15465,6 +15473,8 @@ namespace  {
     class Socialite extends \Laravel\Socialite\Facades\Socialite {}
 
     class Excel extends \Maatwebsite\Excel\Facades\Excel {}
+
+    class Horizon extends \Laravel\Horizon\Horizon {}
  
 }
 

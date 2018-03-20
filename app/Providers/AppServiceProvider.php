@@ -2,7 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\Job;
+use Illuminate\Queue\Events\JobFailed;
+use Illuminate\Queue\Events\JobProcessed;
 use Illuminate\Support\ServiceProvider;
+use Queue;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,6 +18,23 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         \Carbon\Carbon::setLocale('zh');
+
+        Queue::after(function (JobProcessed $event) {
+            $data = unserialize($event->job->payload()['data']['command']);
+            $id = $data->_job->id;
+            $job = Job::find($id);
+            $job->status = config('enums.job_status.success');
+            $job->save();
+        });
+
+        Queue::failing(function (JobFailed $event) {
+            $data = unserialize($event->job->payload()['data']['command']);
+            $id = $data->_job->id;
+            $job = Job::find($id);
+            $job->status = config('enums.job_status.fail');
+            $job->desc = $event->exception->getMessage();
+            $job->save();
+        });
     }
 
     /**
