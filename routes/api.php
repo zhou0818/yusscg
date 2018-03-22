@@ -32,9 +32,12 @@ $api->version('v1', [
         // 图片验证码
         $api->post('captchas', 'CaptchasController@store')
             ->name('api.captchas.store');
-        // 第三方登录
-        $api->post('socials/{social_type}/authorizations', 'AuthorizationsController@socialStore')
-            ->name('api.socials.authorizations.store');
+        // 微信登录
+        $api->post('wechat/{auth_type}/authorizations', 'AuthorizationsController@wechatStore')
+            ->name('api.wechat.authorizations.store');
+        // 绑定微信
+        $api->put('wechat/{auth_type}/authorizations', 'AuthorizationsController@bind')
+            ->name('api.wechat.authorizations.bind');
         // 登录
         $api->post('{auth_type}/authorizations', 'AuthorizationsController@store')
             ->name('api.authorizations.store');

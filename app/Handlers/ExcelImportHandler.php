@@ -31,10 +31,10 @@ class ExcelImportHandler
         Excel::filter('chunk')->load($path)->chunk(200, function ($results) {
             $info_array = $results->toArray();
 
-            //事务，执行3次
+            //事务，最多执行3次
             DB::transaction(function () use ($info_array) {
                 foreach ($info_array as $key => $info) {
-                    NewStudent::firstOrCreate(['reg_num' => $info['报名号']],
+                    NewStudent::updateOrCreate(['reg_num' => $info['报名号']],
                         [
                             'name' => $info['姓名'],
                             'reg_num' => $info['报名号'],
